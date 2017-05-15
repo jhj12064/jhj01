@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+  namespace:命名空间 全局唯一
+     命名规则：包名+文件名  com.shsxt.mapper.UserMapper
+ -->
+<mapper namespace="com.shsxt.mapper.UserMapper">
+
+   <!-- 
+      mappered statement 配置
+        标签配置
+          id:statement 标识 当前文件值唯一
+          parameterType(输入参数):基本数据类型  字符串  日期  java bean  map  list 数组
+          resultType(输出参数  或者resultMap):基本数据类型  java bean  map 
+          标签体内容：
+          sql 语句声明
+           参数占位符指定
+             #{id} 参数占位符  ？？？
+             ${value} 拼接方式（不建议使用 sql 注入攻击   id=1 or (delete from user where 1=1)）
+    -->
+    <select id="queryUserById" parameterType="int"   resultType="com.shsxt.vo.User">
+         select id,user_name as userName,user_pwd as userPwd
+         from t_user
+         where id=#{id}
+    </select>
+
+
+
+
+
+</mapper>  
+
